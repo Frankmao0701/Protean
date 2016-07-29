@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("MainActivity", "first change!");
-        mRequestQueue =  Volley.newRequestQueue(this);
+        mRequestQueue = Volley.newRequestQueue(this);
         loadData();
     }
 
