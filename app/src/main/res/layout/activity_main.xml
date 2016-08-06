@@ -8,4 +8,10 @@
 
     <TextView android:text="Hello World!" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="下载"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>
