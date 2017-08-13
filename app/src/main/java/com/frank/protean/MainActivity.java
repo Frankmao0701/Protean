@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        mRequestQueue = Volley.newRequestQueue(this);
 //        loadData();
+        Log.i(TAG,"aaaa");
+        Log.i(TAG,"bbbb");
+        Log.i(TAG,"bbbb");
         registerReceiver();
         Log.d("MainActivity","Mainname::"+Thread.currentThread().getName());
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
