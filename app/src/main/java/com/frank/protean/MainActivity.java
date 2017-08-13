@@ -42,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"master");
         Log.i(TAG,"master");
         Log.i(TAG,"master");
+        Log.i(TAG,"develop");
+        Log.i(TAG,"develop");
+        Log.i(TAG,"develop");
+        Log.i(TAG,"develop");
 
         registerReceiver();
-        Log.d("MainActivity","Mainname::"+Thread.currentThread().getName());
         Log.d("MainActivity","Mainname::"+Thread.currentThread().getName());
         findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
