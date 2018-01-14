@@ -25,7 +25,6 @@ public class DetailPopAdapter extends BaseAdapter{
 
         this.context = context;
         this.list = list;
-
     }
 
     @Override
