@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 
 public class ContentPageBean implements Serializable {
+    public String id;
     public String url;
-    public boolean isLockedView;
+    public int muilView;//0 item //1 lock 2 loading
+    public String title;
 }

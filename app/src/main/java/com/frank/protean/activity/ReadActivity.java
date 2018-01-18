@@ -1,5 +1,6 @@
 package com.frank.protean.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -35,6 +37,8 @@ public class ReadActivity extends AppCompatActivity {
     private boolean isHor = true;
     private boolean isLoading;
     private Handler mHandler;
+    private boolean isChange;
+    private String chargeId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,9 +62,18 @@ public class ReadActivity extends AppCompatActivity {
         for (int i = 0; i < urls.size(); i++) {
             ContentPageBean pageBean = new ContentPageBean();
             pageBean.url = urls.get(i);
+            pageBean.id = i + 2 + "";
             mData.add(pageBean);
         }
         mAdapter = new ContentAdapter(this);
+        mAdapter.setOnBackClickListener(new ContentAdapter.OnBackClickListener() {
+            @Override
+            public void onBack(String id) {
+                chargeId = id;
+                Intent intent = new Intent(ReadActivity.this, PayActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
         mAdapter.setData(mData);
         recycleView = (RecyclerView) findViewById(R.id.recycleView);
         switch_mode = (TextView) findViewById(R.id.switch_mode);
@@ -92,14 +105,22 @@ public class ReadActivity extends AppCompatActivity {
                     if (firstVisibleItemPosition == lastVisibleItemPosition && firstVisibleItemPosition <= 0 && dx <= 0) {
 //                        loadHeadMore();
 //                        setHeadView();
-                        ContentPageBean pageBean = new ContentPageBean();
-                        pageBean.isLockedView = true;
-                        mData.add(0, pageBean);
+                        final ContentPageBean pageBean = new ContentPageBean();
+                        if (isChange) {
+                            pageBean.id = "1";
+                            pageBean.muilView = 1;
+                        } else {
+                            isChange = true;
+                            pageBean.id = "0";
+                            pageBean.muilView = 1;
+                        }
                         Log.e(TAG, "onScroll:" + Thread.currentThread().getName());
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mAdapter.notifyItemInserted(0);
+//                                mData.add(0, pageBean);
+//                                mAdapter.notifyItemInserted(0);
+                                mAdapter.addHead(pageBean);
                                 Log.e(TAG, "mHandler:" + Thread.currentThread().getName());
                             }
                         }, 0);
@@ -199,6 +220,20 @@ public class ReadActivity extends AppCompatActivity {
         }, 2000);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0) {
+            if (!TextUtils.isEmpty(chargeId)) {
+                for (int i = 0; i < mData.size(); i++) {
+                    if (mData.get(i).id.equals(chargeId)) {
+                        mData.get(i).title = "充值完成";
+                        mAdapter.notifyItemChanged(i);
+                    }
+                }
+            }
+        }
+    }
+
     private void loadMore() {
         Log.e(TAG, "loadMore");
         if (isLoading) {
@@ -252,4 +287,5 @@ public class ReadActivity extends AppCompatActivity {
 //        }
 //
 //    }
+
 }

@@ -18,13 +18,12 @@ import java.util.List;
  * 泛型：H Head viewHolder
  * 泛型：VH Item viewHolder
  */
-public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
+public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder, LH extends RecyclerView.ViewHolder, OH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
 
     private List<ContentPageBean> mData;//数据私有 保证数据操作安全
     protected Context mContext;
-    protected static final int VIEW_TYPE_FOOTER = 0x01;
     protected static final int VIEW_TYPE_ITEM = 0x02;
-    protected static final int VIEW_TYPE_HEAD = 0x03;
+    protected static final int VIEW_TYPE_LOADING = 0x03;
     protected static final int VIEW_TYPE_LOCK = 0x04;
     protected boolean hasMore;
     protected boolean hasHeadMore;
@@ -65,6 +64,10 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
 
     public abstract void onBindLockViewHolder(LH holder, int position);
 
+    public abstract OH onCreateLoadingViewHolder(ViewGroup parent, int viewType);
+
+    public abstract void onBindLoadingViewHolder(OH holder, int position);
+
     public BaseReadAdapter(@NonNull Context context) {
         this.mContext = context;
         mData = new ArrayList<>();
@@ -86,6 +89,9 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
             case VIEW_TYPE_LOCK:
                 viewHolder = onCreateLockViewHolder(parent, viewType);
                 break;
+            case VIEW_TYPE_LOADING:
+                viewHolder = onCreateLoadingViewHolder(parent, viewType);
+                break;
         }
         return viewHolder;
     }
@@ -105,6 +111,9 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
             case VIEW_TYPE_LOCK:
                 onBindLockViewHolder((LH) holder, position);
                 break;
+            case VIEW_TYPE_LOADING:
+                onBindLoadingViewHolder((OH) holder, position);
+                break;
             default:
                 break;
         }
@@ -118,8 +127,14 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
 
     @Override
     public int getItemViewType(int position) {
-        if (isLockedView(position)){
-            return VIEW_TYPE_LOCK;
+        if (mData != null && mData.size() > 0) {
+            if (mData.get(position).muilView == 0) {
+                return VIEW_TYPE_ITEM;
+            } else if (mData.get(position).muilView == 1) {
+                return VIEW_TYPE_LOCK;
+            } else {
+                return VIEW_TYPE_LOADING;
+            }
         }
         return VIEW_TYPE_ITEM;
 //        if (isFooter(position)) {
@@ -154,9 +169,10 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
             notifyDataSetChanged();
         }
     }
+
     public void addHeadData(@NonNull List<ContentPageBean> data) {
         if (this.mData != null) {
-            this.mData.addAll(0,data);
+            this.mData.addAll(0, data);
             notifyDataSetChanged();
         }
     }
@@ -183,18 +199,23 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder,LH exte
     public void hasMore(boolean hasMore) {
         this.hasMore = hasMore;
     }
+
     public void hasHeadMore(boolean hasHeadMore) {
         this.hasHeadMore = hasHeadMore;
     }
 
-//    public boolean isFooter(int position) {
+    //    public boolean isFooter(int position) {
 //        return position == (getItemCount() - 1) && getItemCount() > 0;
 //    }
 //
 //    public boolean isHead(int position) {
 //        return position == 0 && getItemCount() > 0;
 //    }
-    public boolean isLockedView(int position){
-        return mData.get(position).isLockedView;
+    public void addHead(ContentPageBean pageBean) {
+        if (this.mData != null) {
+            mData.add(0, pageBean);
+            notifyItemInserted(0);
+            notifyItemRangeChanged(0,mData.size());
+        }
     }
 }

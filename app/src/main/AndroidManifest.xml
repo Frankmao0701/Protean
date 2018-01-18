@@ -29,6 +29,7 @@
 
         <activity android:name=".activity.DownloadActivity"/>
         <activity android:name=".activity.CoordinatorActivity"/>
+        <activity android:name=".activity.PayActivity"/>
     </application>
 
 </manifest>
