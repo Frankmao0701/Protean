@@ -218,4 +218,11 @@ public abstract class BaseReadAdapter<VH extends RecyclerView.ViewHolder, LH ext
             notifyItemRangeChanged(0,mData.size());
         }
     }
+
+    public void addBottomLock(ContentPageBean pageBean) {
+        if (this.mData!=null){
+            mData.add(pageBean);
+            notifyDataSetChanged();
+        }
+    }
 }

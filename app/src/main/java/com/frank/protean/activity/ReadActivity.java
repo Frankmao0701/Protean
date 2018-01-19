@@ -34,11 +34,13 @@ public class ReadActivity extends AppCompatActivity {
     private TextView switch_mode;
     private LinearLayoutManager manager;
     private PagerSnapHelper horSnapHelper;
-    private boolean isHor = true;
+    private boolean isHor = false;
     private boolean isLoading;
     private Handler mHandler;
     private boolean isChange;
     private String chargeId;
+    private boolean preIsLocked = true;
+    private boolean nextIsLocked = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,9 +53,7 @@ public class ReadActivity extends AppCompatActivity {
         mHandler = new Handler();
         urls = new ArrayList<>();
         mData = new ArrayList<>();
-//        for (int i = 5; i < 15; i++) {
-//            urls.add(i + "");
-//        }
+
         urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/052a60786c0d36eaae7f0b94edbb6931.jpg");
         urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/4e6c30ff73e5a11d7d24675dd77a5002.jpg");
         urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a88a4da26ff88b145cf05461b40aba12.jpg");
@@ -68,20 +68,41 @@ public class ReadActivity extends AppCompatActivity {
         mAdapter = new ContentAdapter(this);
         mAdapter.setOnBackClickListener(new ContentAdapter.OnBackClickListener() {
             @Override
-            public void onBack(String id) {
-                chargeId = id;
-                Intent intent = new Intent(ReadActivity.this, PayActivity.class);
-                startActivityForResult(intent, 0);
+            public void onBack(int position, String id) {
+                mData.remove(position);
+//                mAdapter.notifyItemRemoved(position);
+                List<ContentPageBean> temp = new ArrayList<>();
+                ContentPageBean pageBean = new ContentPageBean();
+                pageBean.id = 100 + "";
+                pageBean.url = "https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/3\\/88ee5b866a698e38c3fa294fc1835185.jpg";
+                ContentPageBean pageBean2 = new ContentPageBean();
+                pageBean2.id = 200 + "";
+                pageBean2.url = "https:\\\\/\\\\/jpapps.qoo-app.com\\\\/comic-test\\\\/1001\\\\/3\\\\/6699ffded74fc3d11105b1e956a93bc9.jpg";
+                temp.add(pageBean);
+                temp.add(pageBean2);
+                mData.addAll(position, temp);
+                mAdapter.notifyItemRangeChanged(position, mData.size());
+//                mAdapter.notifyDataSetChanged();
+//                mAdapter.notifyItemRangeInserted(position, temp.size());
+//                chargeId = id;
+//                Intent intent = new Intent(ReadActivity.this, PayActivity.class);
+//                startActivityForResult(intent, 0);
             }
         });
         mAdapter.setData(mData);
         recycleView = (RecyclerView) findViewById(R.id.recycleView);
         switch_mode = (TextView) findViewById(R.id.switch_mode);
         manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recycleView.setLayoutManager(manager);
         horSnapHelper = new PagerSnapHelper();
-        horSnapHelper.attachToRecyclerView(recycleView);
+        if (isHor) {
+            manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            horSnapHelper.attachToRecyclerView(recycleView);
+        } else {
+            manager.setOrientation(LinearLayoutManager.VERTICAL);
+            horSnapHelper.attachToRecyclerView(null);
+        }
+        recycleView.setLayoutManager(manager);
+
         recycleView.setAdapter(mAdapter);
 
         recycleView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -99,38 +120,31 @@ public class ReadActivity extends AppCompatActivity {
                 Log.e("ReadActivity", firstVisibleItemPosition + "::" + lastVisibleItemPosition + "::" + itemCount + "::" + dx + "::" + dy + "::" + mData.size());
                 if (isHor) {
                     if (firstVisibleItemPosition == lastVisibleItemPosition && lastVisibleItemPosition >= itemCount - 1 && dx >= 0) {
-//                        loadMore();
-//                        setFootView();
+                        if (nextIsLocked) {
+                            showNextLockView();
+                            nextIsLocked = false;
+                        }
                     }
                     if (firstVisibleItemPosition == lastVisibleItemPosition && firstVisibleItemPosition <= 0 && dx <= 0) {
-//                        loadHeadMore();
-//                        setHeadView();
-                        final ContentPageBean pageBean = new ContentPageBean();
-                        if (isChange) {
-                            pageBean.id = "1";
-                            pageBean.muilView = 1;
-                        } else {
-                            isChange = true;
-                            pageBean.id = "0";
-                            pageBean.muilView = 1;
+                        if (preIsLocked) {
+                            showPreLockView();
+                            preIsLocked = false;
                         }
-                        Log.e(TAG, "onScroll:" + Thread.currentThread().getName());
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-//                                mData.add(0, pageBean);
-//                                mAdapter.notifyItemInserted(0);
-                                mAdapter.addHead(pageBean);
-                                Log.e(TAG, "mHandler:" + Thread.currentThread().getName());
-                            }
-                        }, 0);
                     }
                 } else {
                     if (lastVisibleItemPosition >= itemCount - 1 && dy >= 0) {
+                        if (nextIsLocked) {
+                            showNextLockView();
+                            nextIsLocked = false;
+                        }
 //                        loadMore();
 //                        setFootView();
                     }
                     if (firstVisibleItemPosition <= 0 && dy < 0) {
+                        if (preIsLocked) {
+                            showPreLockView();
+                            preIsLocked = false;
+                        }
 //                        loadHeadMore();
 //                        setHeadView();
                     }
@@ -158,6 +172,30 @@ public class ReadActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void showNextLockView() {
+        final ContentPageBean pageBean = new ContentPageBean();
+        pageBean.id = "1";
+        pageBean.muilView = 1;
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.addBottomLock(pageBean);
+            }
+        }, 0);
+    }
+
+    private void showPreLockView() {
+        final ContentPageBean pageBean = new ContentPageBean();
+        pageBean.id = "0";
+        pageBean.muilView = 1;
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.addHead(pageBean);
+            }
+        }, 0);
     }
 
 //    private void setFootView() {
