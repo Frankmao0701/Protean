@@ -54,11 +54,23 @@ public class ReadActivity extends AppCompatActivity {
         urls = new ArrayList<>();
         mData = new ArrayList<>();
 
-        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/052a60786c0d36eaae7f0b94edbb6931.jpg");
-        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/4e6c30ff73e5a11d7d24675dd77a5002.jpg");
-        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a88a4da26ff88b145cf05461b40aba12.jpg");
-        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a4d402bf626cf501816b976d7c49536d.jpg");
-        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a67970ca9d5f1206f2ca50819c713d34.jpg");
+//        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/052a60786c0d36eaae7f0b94edbb6931.jpg");
+//        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/4e6c30ff73e5a11d7d24675dd77a5002.jpg");
+//        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a88a4da26ff88b145cf05461b40aba12.jpg");
+//        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a4d402bf626cf501816b976d7c49536d.jpg");
+//        urls.add("https:\\/\\/jpapps.qoo-app.com\\/comic-test\\/1001\\/2\\/a67970ca9d5f1206f2ca50819c713d34.jpg");
+//
+//        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/052a60786c0d36eaae7f0b94edbb6931.jpg");
+//        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/4e6c30ff73e5a11d7d24675dd77a5002.jpg");
+//        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/a88a4da26ff88b145cf05461b40aba12.jpg");
+//        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/a4d402bf626cf501816b976d7c49536d.jpg");
+//        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/a67970ca9d5f1206f2ca50819c713d34.jpg");
+
+        urls.add("https://jpapps.qoo-app.com/comic-test/6006/1/283e33330324a64b5060b78228d23529.jpg?state=48f738e362ea0a6ffaadf11dbf029b76&Expires=1516621042&Signature=A-Rm06y2Z-CzodLg%7E0DFn7bvoEJnZuFYvsKn1ZEzlV7Q8%7E-j7vTeLhyoSPLUqct%7EwfsjCl8994BeESyIA%7ERxKGuiWlxmYatwMBXsuYRU8rfhV3pr9pxW1VBRrMwtNQIbNDHC9fZfDrlxOhD76PQOYS7qc6aSfUbm5OoTrxc7qyawpvFw%7ESqJmjtUgGG5XmVctE-eU%7EsEWqZGDGaP0URlXgj6pHkDPmWTpqHw3uPMLEtKGrvhX6uRebyIRvxTdTcloQtIFNTUeOVd2KFZ6C%7Ehfmi%7EucI0H1LpdExcLmXZ9bOU8MzALhN769wrvUrhCqGRUfrI1twy0s5wARy8PSaSAg__&Key-Pair-Id=APKAIT7NSYMJ4OLHUOTQ&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6XC9cL2pwYXBwcy5xb28tYXBwLmNvbVwvY29taWMtdGVzdFwvNjAwNlwvMVwvMjgzZTMzMzMwMzI0YTY0YjUwNjBiNzgyMjhkMjM1MjkuanBnP3N0YXRlPTQ4ZjczOGUzNjJlYTBhNmZmYWFkZjExZGJmMDI5Yjc2IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTE2NjIxMDQyfX19XX0_");
+        urls.add("https://jpapps.qoo-app.com/comic-test/6006/1/e7dfbc97b1424c5a5f642300a6d5b3c0.jpg?state=a029d9a480b87a3ccce4d37c253b5eec&Expires=1516621042&Signature=MEvvltNSfU-q%7EoS7gbMNPIIyAnJH3piDqkJOeEIbtrdLnF%7EID9ZFge10wVIZ5ZYR1EYcVvTQaCfMkOY5Y8iaOMzS-ZdXI6dOmYQkdX6eLrVeQH2ehkuMqVlNSOnU-cBqWoIEmh33repXf3GbiIHK6m8kQHfSH8vND5CKpKGzuFqu1t2FFS8tVknsjIvnlhlL0cYnQ-5B3r70LPnpWIR0OKVEmTYxtL2hOWQAN2mvMLx3ZZ96xIIF8FpwjTe5LuYAxx8EegO0MN9-bVjaF0cUVws8InUQFvogwXbeRHOwqbnS1TdxDp3u5THuryMijjXDcWPK6wR5f8O49th4f0CkMg__&Key-Pair-Id=APKAIT7NSYMJ4OLHUOTQ&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6XC9cL2pwYXBwcy5xb28tYXBwLmNvbVwvY29taWMtdGVzdFwvNjAwNlwvMVwvZTdkZmJjOTdiMTQyNGM1YTVmNjQyMzAwYTZkNWIzYzAuanBnP3N0YXRlPWEwMjlkOWE0ODBiODdhM2NjY2U0ZDM3YzI1M2I1ZWVjIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTE2NjIxMDQyfX19XX0_");
+        urls.add("https://jpapps.qoo-app.com/comic-test/6006/1/10415ebee1cf2aeea48d2b6c838dbeba.jpg?state=2c39b6d40de8264456d83253e1e82d82&Expires=1516621042&Signature=XLG6C6XteGYzOFtqBjcRBeuZCEnCMW3B0lgfwIV8STnvOuKnzEmMrKiWYNVlZP3aexLSGy9zDclZwsfXR3eH9dnJ-b6Ox2yDXlWCaem75qPJ15cpMi0WyikmvcgtCFH6xyC8Eo%7EWyOwwUa36Byp0H4pCadIinHlKp4POxW27ZzZxy1mM%7EiYE65%7EFZKSONOLh2QpA%7EgXjtrV4w8FCrfELmmMGWf8PC0RV4H1r3nBd1Krq69Jx4Wk19D71mposweuy6QicX8pWIXR16peMUv395n7B7FYGvNEiutp96wSKFgPFMRKHNmR%7EZNYLfxWedUea7wF7Te4lUb1LcSS98ud8RQ__&Key-Pair-Id=APKAIT7NSYMJ4OLHUOTQ&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6XC9cL2pwYXBwcy5xb28tYXBwLmNvbVwvY29taWMtdGVzdFwvNjAwNlwvMVwvMTA0MTVlYmVlMWNmMmFlZWE0OGQyYjZjODM4ZGJlYmEuanBnP3N0YXRlPTJjMzliNmQ0MGRlODI2NDQ1NmQ4MzI1M2UxZTgyZDgyIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTE2NjIxMDQyfX19XX0_");
+        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/a67970ca9d5f1206f2ca50819c713d34.jpg");
+        urls.add("https://jpapps.qoo-app.com/comic-test/1001/2/a67970ca9d5f1206f2ca50819c713d34.jpg");
         for (int i = 0; i < urls.size(); i++) {
             ContentPageBean pageBean = new ContentPageBean();
             pageBean.url = urls.get(i);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.frank.protean.photoview.PhotoView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView xmlns:android="http://schemas.android.com/apk/res/android"
                                        android:id="@+id/img_content"
                                        android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
@@ -13,4 +13,4 @@
     <!--android:adjustViewBounds="true"-->
     <!--android:scaleType="centerCrop"/>-->
 
-</com.frank.protean.photoview.PhotoView>
+</com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView>

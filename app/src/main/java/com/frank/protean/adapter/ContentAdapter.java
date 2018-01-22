@@ -1,23 +1,22 @@
 package com.frank.protean.adapter;
 
 import android.content.Context;
-import android.graphics.PointF;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.davemorrissey.labs.subscaleview.decoder.DecoderFactory;
 import com.davemorrissey.labs.subscaleview.decoder.ImageDecoder;
@@ -25,7 +24,6 @@ import com.davemorrissey.labs.subscaleview.decoder.ImageRegionDecoder;
 import com.frank.protean.R;
 import com.frank.protean.ScreenUtils;
 import com.frank.protean.bean.ContentPageBean;
-import com.frank.protean.photoview.PhotoView;
 import com.frank.protean.wiget.PicassoDecoder;
 import com.frank.protean.wiget.PicassoRegionDecoder;
 import com.squareup.picasso.Picasso;
@@ -61,11 +59,28 @@ public class ContentAdapter extends BaseReadAdapter<ContentAdapter.ListViewHolde
     public void onBindItemViewHolder(final ListViewHolder holder, int position) {
 //        Log.e("ContentAdapter", position + "");
         final ContentPageBean pageBean = getItem(position);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        params.width = ScreenUtils.getScreenWidth(mContext) - 2;
-        holder.img_content.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        Picasso.with(mContext).load(pageBean.url).into(holder.img_content);
-//        holder.img_content.setLayoutParams(params);
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        params.width = ScreenUtils.getScreenWidth(mContext) - 2;
+        Glide.with(mContext).asFile().load(pageBean.url).into(new SimpleTarget<File>() {
+            @Override
+            public void onResourceReady(File resource, Transition<? super File> transition) {
+                ImageSource imageSource = ImageSource.uri(Uri.fromFile(resource));
+                holder.img_content.setImage(imageSource);
+                holder.img_content.setZoomEnabled(true);
+            }
+
+            @Override
+            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                super.onLoadFailed(errorDrawable);
+            }
+
+            @Override
+            public void onLoadStarted(@Nullable Drawable placeholder) {
+                ImageSource imageSource =ImageSource.resource(R.mipmap.ic_launcher);
+                holder.img_content.setImage(imageSource);
+            }
+        });
+
 
     }
 
@@ -134,11 +149,11 @@ public class ContentAdapter extends BaseReadAdapter<ContentAdapter.ListViewHolde
 
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
-        PhotoView img_content;
+        SubsamplingScaleImageView img_content;
 
         public ListViewHolder(View itemView) {
             super(itemView);
-            img_content = (PhotoView) itemView.findViewById(R.id.img_content);
+            img_content = (SubsamplingScaleImageView) itemView.findViewById(R.id.img_content);
         }
     }
 
