@@ -4,10 +4,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <com.frank.protean.wiget.ReadRecycleView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"></com.frank.protean.wiget.ReadRecycleView>
 
     <TextView
         android:id="@+id/switch_mode"
@@ -18,4 +18,16 @@
         android:background="@android:color/holo_red_light"
         android:padding="5dp"
         android:text="切换成竖向"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:textColor="@android:color/holo_red_light"
+        android:text="title"
+        android:background="@android:color/holo_blue_light"
+        android:textSize="16sp"/>
 </RelativeLayout>

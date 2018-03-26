@@ -111,6 +111,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="com.github.bumptech.glide:disklrucache:4.1.1@jar" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit:junit:4.12@jar" level="project" />
+    <orderEntry type="library" exported="" name="__local_aars__:C.\Users\Frankmao\Desktop\Github\Protean\app\libs\jsoup-1.11.2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="__local_aars__:C.\Users\Frankmao\Desktop\Github\Protean\app\libs\volley.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-core-ui-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-compat-25.3.1" level="project" />

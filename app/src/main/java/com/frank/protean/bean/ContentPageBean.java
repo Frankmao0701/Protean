@@ -7,8 +7,11 @@ import java.io.Serializable;
  */
 
 public class ContentPageBean implements Serializable {
-    public String id;
     public String url;
-    public int muilView;//0 item //1 lock 2 loading
+    public boolean showLock;//0 item //1 lock 2 loading
     public String title;
+    public int position;
+    public int total;
+
+
 }

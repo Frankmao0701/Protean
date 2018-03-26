@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView xmlns:android="http://schemas.android.com/apk/res/android"
-                                       android:id="@+id/img_content"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:adjustViewBounds="true"
-                                       android:background="#000000">
+<com.frank.protean.photoview.PhotoView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:id="@+id/img_content"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:adjustViewBounds="true"
+                                                 android:background="#000000"
+                                                 android:scaleType="centerCrop">
 
     <!--<com.qooapp.qoohelper.wigets.photoview.PhotoView-->
-    <!--android:id="@+id/img_content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:adjustViewBounds="true"-->
-    <!--android:scaleType="centerCrop"/>-->
+        <!--android:id="@+id/img_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:scaleType="centerCrop"/>-->
 
-</com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView>
+</com.frank.protean.photoview.PhotoView>
