@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.UrlPictureActivity">
+        <activity android:name=".launchmode.ALauchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -31,6 +31,14 @@
         <activity android:name=".activity.DownloadActivity"/>
         <activity android:name=".activity.CoordinatorActivity"/>
         <activity android:name=".activity.PayActivity"/>
+        <activity
+            android:name=".launchmode.BLauchActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.frank.protean1"/>
+        <activity
+            android:name=".launchmode.CLauchActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.frank.protean1"/>
 
         <service
             android:name=".AIDLService"
@@ -38,6 +46,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.frank.server.action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MessengerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.frank.messenger.action"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>

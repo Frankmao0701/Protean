@@ -78,7 +78,11 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/data-binding-info" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/data-binding-layout-out" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.databinding/adapters/1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.databinding/library/1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support.constraint/constraint-layout/1.0.0-alpha7/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars" />
@@ -109,7 +113,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="com.android.databinding:adapters-1.1" level="project" />
     <orderEntry type="library" exported="" name="com.github.bumptech.glide:disklrucache:4.1.1@jar" level="project" />
+    <orderEntry type="library" exported="" name="com.android.databinding:baseLibrary:2.1.2@jar" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" exported="" name="__local_aars__:C.\Users\Frankmao\Desktop\Github\Protean\app\libs\jsoup-1.11.2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" exported="" name="__local_aars__:C.\Users\Frankmao\Desktop\Github\Protean\app\libs\volley.jar:unspecified@jar" level="project" />
@@ -118,7 +124,9 @@
     <orderEntry type="library" exported="" name="com.squareup.okio:okio:1.11.0@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support.constraint:constraint-layout-solver:1.0.0-alpha7@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-core-utils-25.3.1" level="project" />
+    <orderEntry type="library" exported="" name="com.googlecode.juniversalchardet:juniversalchardet:1.0.3@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-v4-25.3.1" level="project" />
+    <orderEntry type="library" exported="" name="com.android.databinding:library-1.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-fragment-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-media-compat-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-annotations:26.0.2@jar" level="project" />
@@ -131,6 +139,7 @@
     <orderEntry type="library" exported="" name="com.github.bumptech.glide:annotations:4.1.1@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:appcompat-v7-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0@jar" level="project" />
+    <orderEntry type="library" exported="" name="com.android.databinding:compiler:2.1.2@jar" level="project" />
     <orderEntry type="library" exported="" name="com.squareup.picasso:picasso:2.5.2@jar" level="project" />
     <orderEntry type="library" exported="" name="com.davemorrissey.labs:subsampling-scale-image-view-3.5.0" level="project" />
     <orderEntry type="library" exported="" name="com.github.bumptech.glide:gifdecoder:4.1.1@jar" level="project" />
