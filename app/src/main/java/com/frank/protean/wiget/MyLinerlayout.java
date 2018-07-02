@@ -1,5 +1,6 @@
 package com.frank.protean.wiget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -31,10 +32,12 @@ public class MyLinerlayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        Log.e("ViewTransmit", "onTouchEvent::" + ev.getAction());
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             downTime = System.currentTimeMillis();
             downX = ev.getX();
             downY = ev.getY();
+            return true;
         } else if (ev.getAction() == MotionEvent.ACTION_UP) {
             float upX = ev.getX();
             float upY = ev.getY();
