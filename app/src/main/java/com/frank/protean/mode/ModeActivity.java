@@ -7,6 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.frank.protean.R;
+import com.frank.protean.mode.cloneable.WordDocument;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModeActivity extends AppCompatActivity {
     @Override
@@ -14,7 +18,8 @@ public class ModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_mode);
 //        singleMode();
-        builderMode();
+//        builderMode();
+        concreatePrototype();
     }
 
     private void singleMode() {
@@ -30,5 +35,29 @@ public class ModeActivity extends AppCompatActivity {
 //        director.construct("英特尔i7", "Retina显示器");
 
         Log.e("ModeActivity::", new MacbookBuilder().buildBoard("英特尔i7").buildDisplay("Retina显示器").buildOS().create().toString());
+    }
+
+    /**
+     * 浅拷贝和深拷贝
+     * 原型模式
+     */
+    private void concreatePrototype(){
+
+        //浅拷贝
+        WordDocument wordDocument = new WordDocument();
+        wordDocument.setName("Frank");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("图片1");
+        list.add("图片2");
+        wordDocument.setImages(list);
+
+        Log.e("原型模式::","copy后的对象...");
+        WordDocument copyDoc = wordDocument.clone();
+        copyDoc.setName("Fiona");
+        copyDoc.getImages().add("图片3");
+        copyDoc.showDoc();
+
+        Log.e("原型模式::","原来的对象...");
+        wordDocument.showDoc();
     }
 }
