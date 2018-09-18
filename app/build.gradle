@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
@@ -43,4 +44,9 @@ dependencies {
     implementation 'android.arch.lifecycle:runtime:1.1.1'
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
     implementation files('libs/jsoup-1.11.2.jar')
+    implementation files('libs/qoo-sdk-v2.0.jar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
