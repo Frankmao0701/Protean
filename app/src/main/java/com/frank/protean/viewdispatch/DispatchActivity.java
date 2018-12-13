@@ -6,9 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 
 import com.frank.protean.R;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Created by Frankmao on 2018/4/27.
@@ -21,20 +25,27 @@ public class DispatchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispatch);
-        Log.e("DispatchActivity", ViewConfiguration.get(this).getScaledTouchSlop() + "");
+//        Log.e("DispatchActivity", ViewConfiguration.get(this).getScaledTouchSlop() + "");
         btn_test = (Button) findViewById(R.id.btn_test);
+        Field field;
         btn_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("DispatchActivity", "btn_click::");
+                Log.e("dispatch", "btn_click::");
+            }
+        });
+        getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(new ViewTreeObserver.OnGlobalFocusChangeListener() {
+            @Override
+            public void onGlobalFocusChanged(View view, View view1) {
+
             }
         });
     }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        if (hasFocus) {
-            Log.e("DispatchActivity", "onWindowFocusChanged" + btn_test.getMeasuredWidth() + "::" + btn_test.getMeasuredHeight());
-        }
-    }
+//
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        if (hasFocus) {
+//            Log.e("DispatchActivity", "onWindowFocusChanged" + btn_test.getMeasuredWidth() + "::" + btn_test.getMeasuredHeight());
+//        }
+//    }
 }

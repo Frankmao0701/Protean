@@ -18,7 +18,7 @@ public class BLauchActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lauch_b);
-        Log.e(TAG, "onCreate:::");
+        Log.e(TAG, "B id:::"+ALauchActivity.id);
         findViewById(R.id.btn_jumb).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

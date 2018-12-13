@@ -29,7 +29,6 @@ public class MyLinerlayout extends LinearLayout {
     private float downY;
     private long downTime;
 
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         Log.e("ViewTransmit", "onTouchEvent::" + ev.getAction());
@@ -43,7 +42,7 @@ public class MyLinerlayout extends LinearLayout {
             float upY = ev.getY();
             if (System.currentTimeMillis() - downTime < 500 && (Math.abs(upX - downX) < 20 && Math.abs(upY - downY) < 20)) {
                 if (upX > 0 && upX <= this.getWidth() && upY >= this.getHeight() / 3 && upY < this.getHeight() / 3 * 2) {
-                    Log.e("ViewTransmit", "middleClick");
+                    Log.e("dispatch:", "middleClick");
                 }
                 return true;
             }

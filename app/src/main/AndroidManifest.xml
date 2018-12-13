@@ -19,7 +19,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mode.builder.ModeActivity">
+        <activity android:name=".datastruct.DataActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -32,11 +33,10 @@
         <activity android:name=".activity.PayActivity"/>
         <activity
             android:name=".launchmode.BLauchActivity"
-            android:launchMode="singleTask"
-            android:taskAffinity="com.frank.protean1"/>
+            android:taskAffinity="com.frank.protean1"
+            android:process=":remote"/>
         <activity
             android:name=".launchmode.CLauchActivity"
-            android:launchMode="singleTask"
             android:taskAffinity="com.frank.protean1"/>
 
         <service
