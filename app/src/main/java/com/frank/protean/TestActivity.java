@@ -21,6 +21,7 @@ public class TestActivity extends Activity implements AutoTextview.ChangeLayoutL
         test2.setChangeLayoutListener(this,test2);
         test1.setText("我是毛文强毛文强毛文强毛文强毛文强毛文强毛文强毛文强毛文强毛文强毛文强毛文强");
         test2.setText("我是毛文强毛文强");
+        test2.setText("stash stash");
     }
 
     @Override
