@@ -116,4 +116,18 @@ public class Sort2Activity extends AppCompatActivity {
             }
         }
     }
+    public void rm4(ArrayList<Object> list,int[] indexs){
+        Iterator iterator = list.iterator();
+        Arrays.sort(indexs);
+        int i = -1;
+        int j = 0;
+        while (iterator.hasNext()){
+            iterator.next();
+            i++;
+            if(i == indexs[j]){
+                iterator.remove();
+                j++;
+            }
+        }
+    }
 }
