@@ -1,5 +1,6 @@
 package com.frank.protean.datastruct;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -15,6 +16,7 @@ public class DataActivity extends BaseActivity {
         Node node = new Node(str);
         SingleLinkedList list = new SingleLinkedList<>();
         list.add(0,node);
+
 
     }
 }
