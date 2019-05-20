@@ -24,6 +24,9 @@ public class AlgorithmClass {
         printArr(arr);
     }
 
+    /**
+     * 选择排序平均时间复杂度为:O(n2)。
+     */
     private static void xuanzhe() {
         int[] arr = new int[]{3, 1, 8, 6, 2};
         for (int i = 0; i < arr.length; i++) {
