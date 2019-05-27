@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
     dataBinding {
         enabled=true
@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.frank.protean"
         minSdkVersion 22
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
@@ -30,9 +30,9 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.5.0'
@@ -47,6 +47,10 @@ dependencies {
     implementation files('libs/qoo-sdk-v2.0.jar')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.airbnb.android:lottie:2.5.0'
+//    compile project(':lottie-release')
+    implementation "android.arch.core:runtime:1.1.1"
+    implementation "android.arch.core:common:1.1.1"
     implementation(name:'hotel-core-v1.0.0',ext:'aar')
 }
 repositories {
